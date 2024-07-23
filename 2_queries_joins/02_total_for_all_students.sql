@@ -21,3 +21,4 @@ WHERE cohorts.name = 'FEB12';
 -- This gives us the total time spent by all FEB12 students on assignments
 
 -- The result is a single column total_duration with the total time
+
