@@ -1,6 +1,10 @@
 // connect to the bootcampx database using this
 const { Pool } = require("pg");
 
+const cohortName = process.argv[2];
+const limit = process.argv[3] || 5;
+// Store all petentially maliucious values in an array
+const values = [`%{cohortsName}%`, limit];
 
 
 const pool = new Pool({
@@ -16,9 +20,10 @@ pool
 SELECT students.id as student_id, students.name as name, cohorts.name as cohort
 FROM students
 JOIN cohorts ON cohorts.id = cohort_id
-WHERE cohorts.name LIKE '%${process.argv[2]}%'
-LIMIT ${process.argv[3] || 5};
-`
+WHERE cohorts.name LIKE 1$
+LIMIT LIKE 2$;
+`,
+    values
   )
   .then((res) => {
     res.rows.forEach((user) => {
